@@ -1,0 +1,8 @@
+node_modules
+
+.env
+nodemon.json
+test.js
+
+public/uploads/images/*
+!public/uploads/images/.gitkeep
