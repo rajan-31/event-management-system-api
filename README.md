@@ -1,78 +1,80 @@
 # Event Management System API
 
-## Tech Stack
+### Tech Stack
 
 -   Node.js
 -   Express.js
 -   MongoDB (MongoDB Atlas)
 
-## Install equirements
+### 1. Install requirements
 
-In project root execute,
+In project root folder execute,
 
 ```bash
 npm install
 ```
 
-## Set environment variables
+### 2. Set environment variables
 
 -   Rename `.env.sample` file to `.env`
 -   Set MongoDB connection URL (local or MongoDB Atlas)
 
-## Start Server
+### 3. Start Server
 
 ```bash
 npm start
 ```
 
-Server will be accessible on http://localhost:8080
+Server will be accessible at http://localhost:8080
 
 <br><br>
 
-# API testing using Postman
+## API testing using Postman
 
-Download Postman collection from [here](https://drive.google.com/file/d/1DdXJAtK2IWKRhloXtI87n276qGKfnCuK/view?usp=share_link) and import
+**Download Postman collection from [here](https://drive.google.com/file/d/1DdXJAtK2IWKRhloXtI87n276qGKfnCuK/view?usp=share_link) and import it in Postman**
 
 <br>
 
-**For event's POST and PUT requests following data format is required in form-data body**
+For event's POST and PUT requests following data format is required in form-data body
 
-> **\*title**: \<String>
->
-> **\*registrationLink**: \<String>
->
-> **\*dateTimeFrom**: DD/MM/YYYY hh:mm:ss a
->
-> **\*dateTimeTo**: DD/MM/YYYY hh:mm:ss a
->
-> **\*about**: \<String> // HTML from rich text editor
->
-> **\*speakers[i][name]**: \<String>
->
-> **\*speakers[i][about]**: \<String>
->
-> **\*speakers[i]**: \<File>
->
-> **moderators[j][name]**: \<String>
->
-> **moderators[j][about]**: \<String>
->
-> **moderators[j]**: \<File>
->
-> **readingMaterialAndResource**: \<String> // HTML from rich text editor
->
-> **joiningInfo**: \<String> // HTML from rich text editor
->
-> **organizedBy[m]**: \<String>
->
-> **tags[n]**: \<String>
+```python
+*title: <String>
+
+*registrationLink: <String>
+
+*dateTimeFrom: <DateTime>       # DD/MM/YYYY hh:mm:ss a
+
+*dateTimeTo: <DateTime>         # DD/MM/YYYY hh:mm:ss a
+
+*about: <String>                # HTML from rich text editor
+
+*speakers[i][name]: <String>
+
+*speakers[i][about]: <String>
+
+*speakers[i]: <File>
+
+moderators[j][name]: <String>
+
+moderators[j][about]: <String>
+
+moderators[j]: <File>
+
+readingMaterialAndResources: <String>   # HTML from rich text editor
+
+joiningInfo: <String>                   # HTML from rich text editor
+
+organizedBy[m]: <String>
+
+tags[n]: <String>
+```
 
 Note:
 
--   Values of i, j, m and n start from 0 and incremented by 1
--   "\*" indicates required field
+-   Values of i, j, m and n start from 0 and incremented by 1, to add more
+-   \* indicates required field
 -   At least 1 speaker is required
--   HTML from rich text editor is treated as normal String (after sanitization) on server side
+-   HTML from rich text editor is treated as normal string (after sanitization) on server side
 
 <br>
 
@@ -103,7 +105,9 @@ Returns all events
 
 -   Use existing event id
 
-# Plan
+<br><br>
+
+# Project Planning
 
 I identified the data types and format needed for each event field. Then, I realised the HTML form encoding type suited here is `multipart/form-data`, because we had to submit binary data, such as files. I observed that there are field types which have special requirements, like
 
